@@ -13,7 +13,7 @@ To use this package, simply install with npm, add the provider to your app modul
 First off, install the package with npm
 
 ```
-npm install ionic-hardware-buttons --save
+npm install @scaffold-digital/ionic-hardware-buttons --save
 ```
 
 Next, [add the package to your app's module](https://ionicframework.com/docs/native/#Add_Plugins_to_Your_App_Module)
@@ -38,7 +38,7 @@ Next, initialize the provider somewhere early in your app (e.g. app.component.ts
 
 ```
 ...
-import { HardwareButtons } from 'ionic-hardware-buttons';
+import { HardwareButtons } from '@scaffold-digital/ionic-hardware-buttons';
 ...
 
 export class MyApp {
@@ -64,7 +64,7 @@ And you're good to go! Simply add the relevant decorator for the hardware button
 Here's a quick example of how you can override the default back button behavior from within a view
 
 ```
-import { BackButton } from 'ionic-hardware-buttons';
+import { BackButton } from '@scaffold-digital/ionic-hardware-buttons';
 
 @Component({
     selector: 'page-home',
