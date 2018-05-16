@@ -1,5 +1,5 @@
 {
-    "name": "ionic-hardware-buttons",
+    "name": "@scaffold-digital/ionic-hardware-buttons",
     "version": "0.0.1",
     "description": "An easier way of handling hardware buttons in Ionic",
     "main": "./dist/index.js",
@@ -8,7 +8,7 @@
     "scripts": {
         "ngc": "ngc",
         "build": "rm -rf dist && npm run ngc",
-        "publishPackage": "npm run build && npm publish"
+        "shipit": "npm run build && npm publish"
     },
     "repository": {
         "type": "git",
