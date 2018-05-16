@@ -12,10 +12,10 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/ScaffoldDigital/ionic-hardware-buttons.git"
+        "url": "git+https://github.com/scaffold-digital/ionic-hardware-buttons.git"
     },
     "keywords": [],
-    "author": "Rob Sinton",
+    "author": "Scaffold Digital",
     "license": "MIT",
     "homepage": "https://scaffold.digital",
     "devDependencies": {
