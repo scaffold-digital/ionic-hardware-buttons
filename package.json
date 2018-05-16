@@ -1,7 +1,7 @@
 {
     "name": "ionic-hardware-buttons",
     "version": "0.0.1",
-    "description": "A better way to manage hardware buttons with Ionic",
+    "description": "An easier way of handling hardware buttons in Ionic",
     "main": "./dist/index.js",
     "typings": "./dist/index.d.ts",
     "files": ["dist"],
