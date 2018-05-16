@@ -93,13 +93,13 @@ We always appreciate any feedback and improvements you might have. Feel free to 
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/ScaffoldDigital/ionic-hardware-buttons/tags). 
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/scaffold-digital/ionic-hardware-buttons/tags). 
 
 ## Authors
 
 * **Rob Sinton** - *Initial package* - [Rabamus](https://github.com/rabamus)
 
-See also the list of [contributors](https://github.com/ScaffoldDigital/ionic-hardware-buttons/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/scaffold-digital/ionic-hardware-buttons/contributors) who participated in this project.
 
 ## License
 
