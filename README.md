@@ -20,7 +20,7 @@ Next, [add the package to your app's module](https://ionicframework.com/docs/nat
 
 ```
 ...
-import { HardwareButtons } from 'ionic-hardware-buttons';
+import { HardwareButtons } from '@scaffold-digital/ionic-hardware-buttons';
 ...
 @NgModule({
   ...
@@ -76,12 +76,10 @@ export class HomePage {
     public onBackButton() {
         if (this.sideBarVisible) {
             this.hideSideBar();
-            return true; // Blocks any further action from parent views, default behaviour etc
+            return false; // Blocks any further action from parent views, default behaviour etc
         }
-        
-        // Not required for this example, but returning false
-        // allows parent views or any default behaviour to continue
-        return false;
+
+        // If we don't return false then the back button event will continue to be handled as normal
     }
     ...
 }
