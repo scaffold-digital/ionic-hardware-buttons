@@ -1,6 +1,6 @@
 {
     "name": "@scaffold-digital/ionic-hardware-buttons",
-    "version": "0.0.2",
+    "version": "1.0.0",
     "description": "An easier way of handling hardware buttons in Ionic",
     "main": "./dist/index.js",
     "typings": "./dist/index.d.ts",
