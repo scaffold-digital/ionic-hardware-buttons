@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { App, NavController, Platform } from 'ionic-angular';
+import { App, Platform, ViewController } from 'ionic-angular';
 
 let callbacks = {};
 
@@ -10,13 +10,16 @@ let callbacks = {};
  */
 export function BackButton() {
     return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
-        let name = target.constructor.name;
-        callbacks[name] = propertyKey;
+        let constructor = target.constructor;
+        callbacks[constructor] = propertyKey;
     }
 }
 
 @Injectable()
 export class HardwareButtons {
+
+    private viewStack: ViewController[] = [];
+
     constructor(
         private app: App,
         private platform: Platform
@@ -24,37 +27,50 @@ export class HardwareButtons {
 
     }
 
+    private getCallbackForViewCtrl(viewCtrl: ViewController) {
+        let instance = viewCtrl.instance;
+        let component = instance.constructor;
+        let method = callbacks[component];
+
+        if (!method) return null;
+
+        let callback = instance[method]
+
+        return callback;
+    }
+
+    private getCurrentViewCtrl(): ViewController {
+        return this.viewStack.length > 0 ? this.viewStack[this.viewStack.length - 1] : null;
+    }
+
     public init() {
+        let app = this.app;
         let platform = this.platform;
 
+        app.viewDidEnter.subscribe((viewCtrl: ViewController) => {
+            this.viewStack.push(viewCtrl);
+        });
+
+        app.viewDidLeave.subscribe((viewCtrl: ViewController) => {
+            let index = this.viewStack.lastIndexOf(viewCtrl);
+            this.viewStack.splice(index, 1);
+        });
+
         platform.registerBackButtonAction(() => {
-            let activeNav: NavController = this.app.getActiveNav();
-            let navCtrl = activeNav;
+            let viewCtrl = this.getCurrentViewCtrl();
+            if (!viewCtrl) return this.app.goBack();
 
-            while (navCtrl) {
-                let result: any = this.triggerCallbackForNavCtrl(navCtrl);
-                if (result === false) return;
-                navCtrl = navCtrl.parent;
-            }
+            let result: any = this.triggerCallbackForViewCtrl(viewCtrl);
+            if (result === false) return;
 
-            if (activeNav.length() <= 1) {
-                if (!activeNav.parent) platform.exitApp();
-                else activeNav.parent.pop();
-            }
-            else activeNav.pop();
+            app.goBack();
         });
     }
 
-    public triggerCallbackForNavCtrl(navCtrl: NavController) {
-        let active = navCtrl.getActive();
-        let name = active.name;
-        let method = callbacks[name];
+    public triggerCallbackForViewCtrl(viewCtrl: ViewController) {
+        let callback = this.getCallbackForViewCtrl(viewCtrl);
+        if (!callback) return;
 
-        if (!method) return;
-
-        let instance = active.instance;
-        let result = instance[method]();
-
-        return result;
+        return callback();
     }
 }
