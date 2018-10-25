@@ -17,6 +17,9 @@
         "type": "git",
         "url": "git+https://github.com/scaffold-digital/ionic-hardware-buttons.git"
     },
+    "publishConfig": {
+        "registry": "https://registry.npmjs.org"
+    },
     "keywords": [],
     "author": "Scaffold Digital",
     "license": "MIT",
